@@ -11,15 +11,21 @@ function createBackoff(options) {
     options = {};
   }
 
-  var initialDelayMs = option(options.initialDelayMs, 700)
-    , multiplyFactor = option(options.multiplyFactor, 1.4)
-    , maxDelayMs = option(options.maxDelayMs, 1000 * 15 /* 15 seconds */)
-    , maxAttempts = option(options.maxAttempts, 50)
-    , verbose = option(options.verbose, false)
-    , tries = 0
+  var initialDelayMs = null
+    , multiplyFactor = null
+    , maxDelayMs = null
+    , maxAttempts = null
+    , verbose = null
+    , tries = null
   ;
 
-  return function backoff(fn, callback) {
+  reset();
+
+  backoff.reset = reset;
+
+  return backoff;
+
+  function backoff(fn, callback) {
 
     var timeout = Math.min(initialDelayMs * Math.pow(
       multiplyFactor, tries++
@@ -60,7 +66,17 @@ function createBackoff(options) {
         throw new MaxAttemptsError("Maximum attempts exceeded!");
       })
       .nodeify(callback);
-  };
+  }
+
+  function reset() {
+    initialDelayMs = option(options.initialDelayMs, 700)
+    multiplyFactor = option(options.multiplyFactor, 1.4)
+    maxDelayMs = option(options.maxDelayMs, 1000 * 15 /* 15 seconds */)
+    maxAttempts = option(options.maxAttempts, 50)
+    verbose = option(options.verbose, false)
+    tries = 0
+  }
+
 }
 
 function option(val, defaultVal) {

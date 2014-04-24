@@ -39,6 +39,28 @@ describe("backoff", function () {
       });
     });
 
+    it('should be resettable', function (done) {
+      var begin = Date.now();
+
+      var b = backoff({ verbose: true });
+
+      b(sleep(690)).then(function () {
+        b.reset();
+        return b(sleep(690));
+      })
+      .then(function () {
+        b.reset();
+        return b(sleep(690));
+      })
+      .then(function () {
+        var elapsedMs = Date.now() - begin
+        assert(
+          (690 * 3) <= elapsedMs && elapsedMs <= (690 * 3 + 30/*ms leeway */)
+        );
+        done();
+      });
+
+    });
   });
 
   describe('using callbacks', function () {
