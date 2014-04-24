@@ -2,8 +2,6 @@ var assert = require('assert');
 var Promise = require('bluebird');
 var backoff = require('../');
 
-// var restCallbacks = require('./rest-callbacks.js');
-
 describe("backoff", function () {
   this.timeout(15000);
 
