@@ -42,7 +42,7 @@ describe("backoff", function () {
     it('should be resettable', function (done) {
       var begin = Date.now();
 
-      var b = backoff({ verbose: true });
+      var b = backoff();
 
       b(sleep(690)).then(function () {
         b.reset();
