@@ -1,0 +1,17 @@
+{
+  "name": "backoff",
+  "version": "0.0.0",
+  "description": "Exponential backoff for retying a given function",
+  "main": "backoff.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "author": "Christopher Thorn <chris@koding.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^1.2.3"
+  },
+  "devDependencies": {
+    "mocha": "^1.18.2"
+  }
+}
