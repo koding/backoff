@@ -1,6 +1,6 @@
 {
   "name": "backoff",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Exponential backoff for retying a given function",
   "main": "backoff.js",
   "scripts": {
