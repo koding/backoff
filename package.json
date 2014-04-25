@@ -1,6 +1,6 @@
 {
   "name": "koding-backoff",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Exponential backoff for retying a given function",
   "main": "backoff.js",
   "scripts": {
