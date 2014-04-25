@@ -1,11 +1,11 @@
 {
-  "name": "backoff",
+  "name": "koding-backoff",
   "version": "0.0.1",
   "description": "Exponential backoff for retying a given function",
   "main": "backoff.js",
   "scripts": {
     "test": "mocha test",
-    "build": "mkdir browser; browserify backoff.js -o browser/backoff.js"
+    "build": "mkdir browser; browserify backoff.js -r ./backoff.js:backoff -o browser/backoff.js"
   },
   "author": "Christopher Thorn <chris@koding.com>",
   "license": "MIT",
