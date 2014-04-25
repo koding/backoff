@@ -4,7 +4,8 @@
   "description": "Exponential backoff for retying a given function",
   "main": "backoff.js",
   "scripts": {
-    "test": "mocha test"
+    "test": "mocha test",
+    "build": "mkdir browser; browserify backoff.js -o browser/backoff.js"
   },
   "author": "Christopher Thorn <chris@koding.com>",
   "license": "MIT",
@@ -12,6 +13,16 @@
     "bluebird": "^1.2.3"
   },
   "devDependencies": {
-    "mocha": "^1.18.2"
+    "mocha": "^1.18.2",
+    "browserify": "^3.44.2",
+    "browserify-shim": "^3.4.1"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browserify-shim": {
+    "bluebird": "global:Promise"
   }
 }
