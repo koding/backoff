@@ -5,7 +5,7 @@
   "main": "backoff.js",
   "scripts": {
     "test": "mocha test",
-    "build": "mkdir browser; browserify backoff.js -r ./backoff.js:backoff -o browser/backoff.js"
+    "build": "mkdir browser; browserify backoff.js -s Backoff -o browser/backoff.js"
   },
   "author": "Christopher Thorn <chris@koding.com>",
   "license": "MIT",
